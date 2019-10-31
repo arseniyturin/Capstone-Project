@@ -10,8 +10,9 @@ z_disribution = lambda x: (x - x.mean()) / x.std() # works as a map function or 
 norm = lambda x: ( x - x.min() ) / ( x.max() - x.min() ) # works as a map function or in list comprehension
 gain = lambda x: x if x > 0 else 0 # works as a map function or in list comprehension
 loss = lambda x: abs(x) if x < 0 else 0 # works as a map function or in list comprehension
-binary = lambda data: [1 if x > 0 else 0 for x in data] # takes a list/array, returns list with binary values
 
+binary = lambda data: [1 if x > 0 else 0 for x in data]
+        
 # split a univariate sequence into samples
 def split_sequence(sequence, n_steps, split=True, ratio=0.8):
     X, y = [], []

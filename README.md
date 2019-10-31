@@ -107,7 +107,7 @@ Lets take a look at the TESLA historical data
 
 <img src="images/arima_dist.png" alt="ARIMA Predictions" />
 
-## Sentiment
+## Sentiment Analysis
 
 <img src="images/news_sentiment.png" alt="Tesla News Sentiment" />
 
@@ -147,13 +147,14 @@ Accuracy 50%
 
 # Conclusion
 
-ARIMA, NN, Naive Bayes = doesn't work
-
-Q-learning = works
+Predicting stock movement for day trading virtually impossible, because historical data has stochastic nature.
+Using technical indicators, such as Bollinger Bands and MACD for buy and hold strategy is the best solution.
 
 # Next Steps
 
-
+- Use fundamental analysis
+- Twitter data
+- Stocks from opposite undustries to find negative correlation
 
 # Referencs
 
