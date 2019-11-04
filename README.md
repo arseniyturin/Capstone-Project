@@ -71,8 +71,8 @@ Project is divided in 3 main sections:
 
 Data was downloaded from <a href="https://finance.yahoo.com">Yahoo Finance</a> via `pandas datareader`
 
-<img src="images/tsla.png" alt="TSLA" style="width:55%" />
-<p style="text-align:center;font:italic 13px arial;color:#666;">Tesla Historical Data</p>
+<img src="images/tsla.png" alt="TSLA" width="600" />
+<p><i>Tesla Historical Data</i></p>
 
 Data provides daily information about stock price and volume.
 
