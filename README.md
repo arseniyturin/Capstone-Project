@@ -122,11 +122,11 @@ Show NN tree here
 
 ## 3.4 Convolutional Neural Network
 
-<img src="images/conv_summary.png" style="width:55%;" alt="" />
+<img src="images/conv_summary.png" width="600" alt="" />
 
 ## 3.5 Bayesian Optimization
 
-<img src="images/bo.png" style="width:75%;" alt="Bayesian Optimization" />
+<img src="images/bo.png" width="600" alt="Bayesian Optimization" />
 
 ## 3.6 Pattern Recognition
 
