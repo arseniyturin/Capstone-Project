@@ -1,3 +1,4 @@
+
 # Machine Learning for Day Trading
 
 ## Capstone Project
@@ -147,14 +148,17 @@ Accuracy 50%
 
 # Conclusion
 
-Predicting stock movement for day trading virtually impossible, because historical data has stochastic nature.
-Using technical indicators, such as Bollinger Bands and MACD for buy and hold strategy is the best solution.
+- ARIMA model can't surpass baseline model due data stochastic behaviour.
+- Convolutional model prone to overfitting, resulting on very good accuracy on training set, and extremely poor accuracy on testing set.
+- Recurrent (LSTM) neural network can't learn from training data, averaging on 50% accuracy both on training and testing data
+- Predictions based on matching patterns from testing data with patterns from testing didn't surpass 50% accuracy
+- **Q-Learning showed good results for short term investment**
 
-# Next Steps
+# Future Work
 
-- Use fundamental analysis
-- Twitter data
-- Stocks from opposite undustries to find negative correlation
+- Incorporate fundamental analysis with historical data
+- Use twitter as a supplement to news data
+- Expand analysis to stock from different industries
 
 # Referencs
 
