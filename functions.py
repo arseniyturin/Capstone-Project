@@ -102,7 +102,7 @@ def scale(dataframe, scale=(0,1)):
     scaler.feature_range = scale
     return pd.DataFrame(scaler.fit_transform(dataframe), columns=columns).dropna()
     
-def bb_trading(stock, budget=15000, u=0.03, l=0.03, show_graph=True):
+def bb_trading(stock, budget=15000, u=0.03, l=0.03, show_graph=True, show_return=True):
     
     money = budget
     stock = stock.reset_index()
@@ -113,7 +113,7 @@ def bb_trading(stock, budget=15000, u=0.03, l=0.03, show_graph=True):
         # Buy
         if (today.Close < today.MA21) and (abs(1 - today.Close / today.Lower_band) < u):
             if money > 0:
-                stock_amt = money / today.Close
+                stock_amt = int(money / today.Close)
                 money = 0
                 net.append([today.Date, today.Close, 1, stock_amt * today.Close])
 
@@ -126,16 +126,17 @@ def bb_trading(stock, budget=15000, u=0.03, l=0.03, show_graph=True):
         
     profit = net[-1][3] - budget
     
-    print('Number of Trades: {}'.format(len(net)))
-    print('Time Frame: {} days'.format((net[-1][0] - net[0][0]).days))
-    print('Profit: ${:.2f} | {}%'.format(profit, round(profit/budget*100, 2)))
+    if show_return == True:
+        print('Number of Trades: {}'.format(len(net)))
+        print('Time Frame: {} days'.format((net[-1][0] - net[0][0]).days))
+        print('Profit: ${:.2f} | {}%'.format(profit, round(profit/budget*100, 2)))
 
     if show_graph == True:
         plotting.trading_history(stock.set_index('Date'), net)
 
     return profit, net
     
-def macd_trading(stock, budget=15000, show_graph=True):
+def macd_trading(stock, budget=15000, show_graph=True, show_return=True):
     
     state_check = lambda x, y: 1 if x > y else 0
     stock = stock.reset_index()    
@@ -153,7 +154,7 @@ def macd_trading(stock, budget=15000, show_graph=True):
 
             # BUY
             if (today.MACD > today.Signal) and (money != 0):
-                stock_amt = money / today.Close
+                stock_amt = int(money / today.Close)
                 money = 0
                 net.append([today.Date, today.Close, 1, stock_amt * today.Close])
 
@@ -166,9 +167,11 @@ def macd_trading(stock, budget=15000, show_graph=True):
         prev_state = state
     
     profit = net[-1][3] - budget
-    print('Number of Trades: {}'.format(len(net)))
-    print('Time Frame: {} days'.format((net[-1][0] - net[0][0]).days))
-    print('Profit: ${:.2f} | {}%'.format(profit, round(profit/budget*100, 2)))
+    
+    if show_return == True:
+        print('Number of Trades: {}'.format(len(net)))
+        print('Time Frame: {} days'.format((net[-1][0] - net[0][0]).days))
+        print('Profit: ${:.2f} | {}%'.format(profit, round(profit/budget*100, 2)))
 
     if show_graph == True:
         plotting.trading_history(stock.set_index('Date'), net)

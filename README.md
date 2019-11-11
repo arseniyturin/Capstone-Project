@@ -6,7 +6,7 @@
 Please fill out:
 * Student name: Arseniy Tyurin
 * Student pace: self paced
-* Scheduled project review date/time: 
+* Scheduled project review date/time: 11/11/19, 5:00PM (GMT-5)
 * Instructor name: Eli Thomas
 * Blog post URL: <a href="https://medium.com/@arseniytyurin/" target="_blank">Machine Learning for Day Trading</a>
 
@@ -18,6 +18,8 @@ Day trading is speculation in securities, specifically buying and selling financ
 The project is broken down into 3 sections.
 All the steps described here
 For detailed information please refer to separate file.
+
+## Fundamentals
 
 ### Value of the company:
 - Intrinsic value (estimated by future dividends)
@@ -60,19 +62,11 @@ The efficient-market hypothesis (EMH) is a hypothesis in financial economics tha
         - compute statistics called indicators (momentum, simple moving average, bollinger bands)
         - indicators are heuristics
 
-## Project Sections
-
-Project is divided in 3 main sections:
-1. Features engineering
-2. Exploratory Analysis
-3. Machine Learning
-
 # 1. Features Engineering
 
 Data was downloaded from <a href="https://finance.yahoo.com">Yahoo Finance</a> via `pandas datareader`
 
 <img src="images/tsla.png" alt="TSLA" width="600" />
-<p><i>Tesla Historical Data</i></p>
 
 Data provides daily information about stock price and volume.
 
@@ -84,13 +78,8 @@ Data provides daily information about stock price and volume.
 - **Volume** indicators (leading or lagging) tally up trades and quantify whether bulls or bear are in control.
 
 <img src="images/tsla_ti.png" alt="TSLA" />
-<p style="text-align:center;font:italic 13px arial;color:#666;">Tesla Historical Data With Technical Indicators</p>
-
-Once our features are engineered we ca jump into exploratory analysis
 
 # 2. Exploratory Analysis
-
-Lets take a look at the TESLA historical data
 
 <img src="images/bb.png" alt="Bollinger Bands" />
 <img src="images/macd.png" alt="MACD" />
@@ -100,35 +89,42 @@ Lets take a look at the TESLA historical data
 
 # 3. Machine Learning
 
+## 3.1 Baseline Model
 
+Baseline models is a benchmark for evaluation of more complex models. Baseline model predict next day stock return 
 
-## 3.1 ARIMA
+<img src="images/baseline_model.png" alt="Baseline Model Accuracy" />
+
+## 3.2 ARIMA
 
 <img src="images/arima.png" alt="ARIMA Predictions" />
 
-<img src="images/arima_dist.png" alt="ARIMA Predictions" />
-
-## Sentiment Analysis
+## 3.3 Sentiment Analysis
 
 <img src="images/news_sentiment.png" alt="Tesla News Sentiment" />
 
-## 3.2 XGBOOST
+## 3.4 XGBOOST
 
 <img src="images/fe.png" alt="Features Importance" />
 
-## 3.3 LSTM
+## 3.5.1 LSTM
 
-Show NN tree here
+<img src="images/lstm_preds.png" alt="LSTM" />
 
-## 3.4 Convolutional Neural Network
+## 3.4.2 Convolutional Neural Network
 
 <img src="images/conv_summary.png" width="600" alt="" />
+<img src="images/conv_predictions.png" alt="" />
 
-## 3.5 Bayesian Optimization
+## 3.5.4 18 Stocks
+
+<img src="images/all_stocks.png" alt="CONV on all stocks" />
+
+## 3.5.4 Bayesian Optimization
 
 <img src="images/bo.png" width="600" alt="Bayesian Optimization" />
 
-## 3.6 Pattern Recognition
+## 3.6 Finding Similar Patterns
 
 <img src="images/pattern_recognition.png" alt="" />
 <img src="images/found_patterns.png" alt="" />
@@ -137,30 +133,34 @@ Accuracy 50%
 
 ## 3.7 Q-Learning
 
-#### Bollinger Bands
-
-<img src="images/tsla_bb_trading.png" style="width:90%;" alt="Tesla Trading History" />
-
-#### MACD
+### 3.7.1 MACD
 
 <img src="images/tsla_macd_trading.png" style="width:90%;" alt="Tesla Trading History" />
 <img src="images/tsla_macd.png" style="width:90%;" alt="Tesla Trading History" />
 
+### 3.7.2 Bollinger Bands
+
+<img src="images/tsla_bb_trading.png" style="width:90%;" alt="Tesla Trading History" />
+
 # Conclusion
 
-- ARIMA model can't surpass baseline model due data stochastic behaviour.
+- ARIMA model can't surpass baseline model accuracy due to the historical data stochastic behaviour.
 - Convolutional model prone to overfitting, resulting on very good accuracy on training set, and extremely poor accuracy on testing set.
 - Recurrent (LSTM) neural network can't learn from training data, averaging on 50% accuracy both on training and testing data
+- Bayesian optimization didn't improve accuracy of convolutional network
+- Neural Network architecture and complexity doesn't affect results of the model performance
 - Predictions based on matching patterns from testing data with patterns from testing didn't surpass 50% accuracy
-- **Q-Learning showed good results for short term investment**
+- **Q-Learning showed good results for short term investment, especially Bollinger Bands**
 
 # Future Work
 
 - Incorporate fundamental analysis with historical data
+- Add recommendations from trading platforms
 - Use twitter as a supplement to news data
 - Expand analysis to stock from different industries
+- Add more rules to swing trading strategy with technical indicators
 
-# Referencs
+# References
 
 - [1] <a href="https://www.investopedia.com/articles/basics/04/100804.asp" target="_blank">Forces That Move Stock Prices</a>
 - [2] <a href="https://machinelearningmastery.com/how-to-develop-lstm-models-for-time-series-forecasting/" target="_blank">How to Develop LSTM Models for Time Series Forecasting</a>
