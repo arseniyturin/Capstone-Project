@@ -8,7 +8,7 @@ Please fill out:
 * Student pace: self paced
 * Scheduled project review date/time: 11/11/19, 5:00PM (GMT-5)
 * Instructor name: Eli Thomas
-* Blog post URL: <a href="https://medium.com/@arseniytyurin/" target="_blank">Machine Learning for Day Trading</a>
+* Blog post URL: <a href="https://towardsdatascience.com/machine-learning-for-day-trading-27c08274df54" target="_blank">Machine Learning for Day Trading</a>
 
 
 # Introduction
